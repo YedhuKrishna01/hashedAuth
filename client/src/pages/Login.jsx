@@ -1,7 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 
 function Login() {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
   const loginUser = (e) => {
     e.preventDefault();
   };
@@ -11,9 +16,21 @@ function Login() {
       <Navbar />
       <form onSubmit={loginUser}>
         <label htmlFor="email">Email:</label>
-        <input type="email" placeholder="enter email" name="email" />
+        <input
+          type="email"
+          placeholder="enter email"
+          name="email"
+          value={data.email}
+          onChange={(e) => setData({ ...data, email: e.target.value })}
+        />
         <label htmlFor="password">Password:</label>
-        <input type="password" placeholder="enter password" name="password" />
+        <input
+          type="password"
+          placeholder="enter password"
+          name="password"
+          value={data.password}
+          onChange={(e) => setData({ ...data, password: e.target.value })}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
