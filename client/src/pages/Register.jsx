@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 function Register() {
   const [data, setData] = useState({
@@ -8,8 +10,16 @@ function Register() {
     password: "",
   });
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault();
+    const { name, email, password } = data;
+    try {
+      const { data } = await axios.post("/register", {
+        name,
+        email,
+        password,
+      });
+    } catch (error) {}
   };
 
   return (

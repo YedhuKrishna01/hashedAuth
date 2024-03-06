@@ -9,6 +9,7 @@ mongoose.connect(process.env.MONGO_URL)
 
 const app = express()
 
+app.use(express.json())
 app.use('/',require('./routes/authRoutes'))
 
 const port = 3000;
